@@ -53,9 +53,8 @@ public class AWSDeviceFarm {
      */
     private AWSDeviceFarm(AWSCredentials creds, String roleArn) {
         if (roleArn != null) {
-            STSAssumeRoleSessionCredentialsProvider sts = new STSAssumeRoleSessionCredentialsProvider
-                    .Builder(roleArn, RandomStringUtils.randomAlphanumeric(8))
-                    .build();
+            STSAssumeRoleSessionCredentialsProvider sts =
+                    new STSAssumeRoleSessionCredentialsProvider(roleArn, RandomStringUtils.randomAlphanumeric(8));
             creds = sts.getCredentials();
         }
 
