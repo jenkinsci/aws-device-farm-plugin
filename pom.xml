@@ -18,8 +18,13 @@
   <dependencies>
     <dependency>
       <groupId>com.amazonaws</groupId>
-      <artifactId>aws-java-sdk</artifactId>
-      <version>1.10.59</version>
+      <artifactId>aws-android-sdk-core</artifactId>
+      <version>2.1.10</version>
+    </dependency>
+    <dependency>
+      <groupId>com.amazonaws</groupId>
+      <artifactId>aws-java-sdk-devicefarm</artifactId>
+      <version>1.11.50</version>
     </dependency>
   </dependencies>
 

@@ -3,7 +3,6 @@ package org.jenkinsci.plugins.awsdevicefarm;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
