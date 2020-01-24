@@ -36,7 +36,7 @@ import java.io.PrintStream;
 public class AWSDeviceFarmTestResultAction extends AbstractTestResultAction<AWSDeviceFarmTestResultAction> implements StaplerProxy {
 
     private static final int DefaultUpdateInterval = 30 * 1000;
-    private PrintStream log;
+    private transient PrintStream log;
     private AWSDeviceFarmTestResult result;
 
     public AWSDeviceFarmTestResultAction(AbstractBuild<?, ?> owner, AWSDeviceFarmTestResult result) {
