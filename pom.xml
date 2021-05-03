@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>3.6</version>
+    <version>4.18</version>
   </parent>
 
   <groupId>org.jenkins-ci.plugins</groupId>
@@ -16,8 +16,9 @@
   <description>AWS Device Farm Jenkins Plugin</description>
 
   <properties>
-    <jenkins.version>1.625.3</jenkins.version>
-    <java.level>7</java.level>
+    <jenkins.version>2.235.5</jenkins.version>
+    <java.level>8</java.level>
+    <configuration-as-code.version>1.44</configuration-as-code.version>
   </properties>
 
   <dependencies>
@@ -25,6 +26,20 @@
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>junit</artifactId>
       <version>1.20</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.jenkins</groupId>
+      <artifactId>configuration-as-code</artifactId>
+      <version>${configuration-as-code.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.jenkins.configuration-as-code</groupId>
+      <artifactId>test-harness</artifactId>
+      <version>${configuration-as-code.version}</version>
+      <scope>test</scope>
     </dependency>
 
     <!-- TODO: use AWS SDK Plugin instead: https://plugins.jenkins.io/aws-java-sdk -->
