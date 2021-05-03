@@ -80,6 +80,7 @@ import org.jenkinsci.plugins.awsdevicefarm.test.XCTestTest;
 import org.jenkinsci.plugins.awsdevicefarm.test.XCTestUITest;
 import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 
@@ -1445,9 +1446,13 @@ public class AWSDeviceFarmRecorder extends Recorder implements SimpleBuildStep {
     @Extension
     @Symbol("devicefarm")
     public static final class DescriptorImpl extends BuildStepDescriptor<Publisher> {
-        public String roleArn;
-        public Secret akid;
-        public Secret skid;
+        private String roleArn;
+        private Secret akid;
+        private Secret skid;
+
+        public String getRoleArn() { return this.roleArn; }
+        public String getAkid() { return Secret.toString(this.akid); }
+        public String getSkid() { return Secret.toString(this.skid); }
 
         private List<String> projectsCache = new ArrayList<String>();
         private Map<String, List<String>> poolsCache = new HashMap<String, List<String>>();
@@ -1463,8 +1468,9 @@ public class AWSDeviceFarmRecorder extends Recorder implements SimpleBuildStep {
          *
          * @param roleArnValue
          */
-        protected final void setRoleArn(String roleArnValue){
-            roleArn = roleArnValue;
+        @DataBoundSetter
+        public void setRoleArn(String roleArnValue) {
+            this.roleArn = roleArnValue;
         }
 
         /**
@@ -1472,8 +1478,9 @@ public class AWSDeviceFarmRecorder extends Recorder implements SimpleBuildStep {
          *
          * @param akidValue
          */
-        protected final void setAkid(String akidValue){
-            akid = Secret.fromString(akidValue);
+        @DataBoundSetter
+        public void setAkid(String akidValue){
+            this.akid = Secret.fromString(akidValue);
         }
 
         /**
@@ -1481,8 +1488,9 @@ public class AWSDeviceFarmRecorder extends Recorder implements SimpleBuildStep {
          *
          * @param skidValue
          */
-        protected final void setSkid(String skidValue){
-            skid = Secret.fromString(skidValue);
+        @DataBoundSetter
+        public void setSkid(String skidValue) {
+            this.skid = Secret.fromString(skidValue);
         }
 
         /**
@@ -2058,6 +2066,10 @@ public class AWSDeviceFarmRecorder extends Recorder implements SimpleBuildStep {
          */
         @Override
         public boolean configure(StaplerRequest req, JSONObject json) {
+            // reset values to default before data-binding
+            this.roleArn = null;
+            this.akid = null;
+            this.skid = null;
             req.bindJSON(this, json);
             save();
             return true;
