@@ -3,7 +3,8 @@
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>3.6</version>
+    <version>4.88</version>
+    <relativePath />
   </parent>
 
   <groupId>org.jenkins-ci.plugins</groupId>
@@ -16,15 +17,26 @@
   <description>AWS Device Farm Jenkins Plugin</description>
 
   <properties>
-    <jenkins.version>2.138.4</jenkins.version>
-    <java.level>8</java.level>
+    <!-- https://www.jenkins.io/doc/developer/plugin-development/choosing-jenkins-baseline/ -->
+    <jenkins.baseline>2.462</jenkins.baseline>
+    <jenkins.version>${jenkins.baseline}.3</jenkins.version>
   </properties>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.jenkins.tools.bom</groupId>
+        <artifactId>bom-${jenkins.baseline}.x</artifactId>
+        <version>4228.v0a_71308d905b_</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>junit</artifactId>
-      <version>1.28</version>
     </dependency>
 
     <!-- TODO: use AWS SDK Plugin instead: https://plugins.jenkins.io/aws-java-sdk -->
@@ -57,13 +69,11 @@
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-        <version>1.15</version>
     </dependency>
 
     <dependency>
       <groupId>org.jenkins-ci.plugins</groupId>
       <artifactId>scm-api</artifactId>
-      <version>2.2.6</version>
     </dependency>
   </dependencies>
 
@@ -77,24 +87,11 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:ssh://github.com/jenkinsci/aws-device-farm-plugin.git</connection>
+    <connection>scm:git:https://github.com/jenkinsci/aws-device-farm-plugin.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/jenkinsci/aws-device-farm-plugin.git</developerConnection>
     <url>https://github.com/jenkinsci/aws-device-farm-plugin</url>
     <tag>HEAD</tag>
   </scm>
-
-  <developers>
-    <developer>
-      <id>chabom</id>
-      <name>Chandra Bommas</name>
-      <email>chabom@amazon.com</email>
-    </developer>
-    <developer>
-      <id>nikdabn</id>
-      <name>Nikhil Dabhade</name>
-      <email>nikdabn@amazon.com</email>
-    </developer>
-  </developers>
 
   <repositories>
     <repository>
