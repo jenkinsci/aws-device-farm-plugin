@@ -4,6 +4,9 @@ CHANGELOG
 This CHANGELOG.md file is meant to be a human-readable summary of the changes in each
 tagged version. There should be one entry for each tagged release of the plugin.
 
+### 1.17
+* Add pipeline support
+
 ### 1.16
 
 * [JENKINS-50483](https://issues.jenkins-ci.org/browse/JENKINS-50483) -
